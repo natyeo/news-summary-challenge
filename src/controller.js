@@ -1,6 +1,6 @@
 (function(exports) {
-  function Controller(GuardianAPI) {
-    this.view = new HeadlinesView(GuardianAPI)
+  function Controller(view) {
+    this.view = view
   }
 
   Controller.prototype.insertHTML = function() {

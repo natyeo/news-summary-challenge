@@ -1,4 +1,7 @@
 var model = new GuardianAPI();
-var controller = new Controller(model);
+model.getTodayData();
+
+var view = new HeadlinesView(model);
+var controller = new Controller(view);
 
 controller.insertHTML();

@@ -1,10 +1,11 @@
 (function(exports) {
-    function HeadlinesView(GuardianAPI) {
-      this.API = GuardianAPI
+    function HeadlinesView(model) {
+      this.api = model
     }
 
     HeadlinesView.prototype.returnHTMLString = function() {
-      let array = this.API.data.flat();
+      let self = this;
+      let array = self.api.data.response.results;
       let HTMLString = "<ul>";
       for (let i = 0; i < array.length; i++) {
         let webUrl = array[i].webUrl;
