@@ -1,6 +1,6 @@
 (function(exports) {
   function GuardianAPI() {
-    this.data = [];
+    this.headlines = [];
   }
 
     GuardianAPI.prototype.getTodayData = function() {
@@ -12,14 +12,13 @@
     GuardianAPI.prototype.newRequest = function(url) {
       let self = this;
       var request = new XMLHttpRequest();
-      request.open("GET", url);
-      request.onreadystatechange = function() {
-        if (request.readyState == 4 && request.status == 200) {
-          self.data = JSON.parse(request.responseText);
-        }
+      request.onload = function() {
+          var data = JSON.parse(request.response).response.results;
+          self.headlines.push(data);
       };
+      request.open("GET", url, true);
       request.send();
-    }
+  }
 
   exports.GuardianAPI = GuardianAPI
 })(this);

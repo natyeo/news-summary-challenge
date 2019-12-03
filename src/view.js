@@ -5,7 +5,7 @@
 
     HeadlinesView.prototype.returnHTMLString = function() {
       let self = this;
-      let array = self.api.data.response.results;
+      let array = self.api.headlines;
       let HTMLString = "<ul>";
       for (let i = 0; i < array.length; i++) {
         let webUrl = array[i].webUrl;
